@@ -39,7 +39,7 @@ class Merchant extends Object
     {
         $curl = curl_init();                                // Инициализируем запрос
         curl_setopt_array($curl, [
-            CURLOPT_URL => GATEWAY_URL . $method,           // Полный адрес метода
+            CURLOPT_URL => $this->gatewayUrl . $method,           // Полный адрес метода
             CURLOPT_RETURNTRANSFER => true,                 // Возвращать ответ
             CURLOPT_POST => true,                           // Метод POST
             CURLOPT_POSTFIELDS => http_build_query($data)   // Данные в запросе
@@ -98,6 +98,10 @@ class Merchant extends Object
         return $this->gateway(self::GATEWAY_REGISTER, $data);
     }
 
+
+    public function checkPayment($orderId) {
+
+    }
 
     /**
      * Получить список вариантов ответа для OrderStatus
